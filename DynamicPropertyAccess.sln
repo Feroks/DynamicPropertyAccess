@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicPropertyAccess", "src\DynamicPropertyAccess\DynamicPropertyAccess.csproj", "{8405EAC7-BD3E-45D6-A7A1-7C14FA81D0B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicPropertyAccess.Tests", "tests\DynamicPropertyAccess.Tests\DynamicPropertyAccess.Tests.csproj", "{95607934-A0EE-43F9-B1AD-D9C507C2C8E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicPropertyAccess.Benchmarks", "tests\DynamicPropertyAccess.Benchmarks\DynamicPropertyAccess.Benchmarks.csproj", "{66FF1571-7D49-4E7D-B369-20C0A818508A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8405EAC7-BD3E-45D6-A7A1-7C14FA81D0B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8405EAC7-BD3E-45D6-A7A1-7C14FA81D0B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8405EAC7-BD3E-45D6-A7A1-7C14FA81D0B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8405EAC7-BD3E-45D6-A7A1-7C14FA81D0B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95607934-A0EE-43F9-B1AD-D9C507C2C8E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95607934-A0EE-43F9-B1AD-D9C507C2C8E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95607934-A0EE-43F9-B1AD-D9C507C2C8E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95607934-A0EE-43F9-B1AD-D9C507C2C8E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66FF1571-7D49-4E7D-B369-20C0A818508A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66FF1571-7D49-4E7D-B369-20C0A818508A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66FF1571-7D49-4E7D-B369-20C0A818508A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66FF1571-7D49-4E7D-B369-20C0A818508A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net472;net7.0</TargetFrameworks>
+        <LangVersion>default</LangVersion>
+        <OutputType>Exe</OutputType>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\src\DynamicPropertyAccess\DynamicPropertyAccess.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BenchmarkDotNet" Version="0.13.5" />
+      <PackageReference Include="DynamicPropertyAccessor" Version="1.0.2" />
+      <PackageReference Include="FastMember" Version="1.5.0" />
+    </ItemGroup>
+
+</Project>
