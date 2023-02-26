@@ -16,8 +16,7 @@ internal readonly struct PropertyAccessCacheKey : IEquatable<PropertyAccessCache
 
 	public bool Equals(PropertyAccessCacheKey other)
 	{
-		// Only check property name, because Type is used to avoid closure
-		return PropertyName == other.PropertyName;
+		return PropertyName == other.PropertyName && Type == other.Type;
 	}
 
 	public override bool Equals(object? obj)
@@ -27,6 +26,9 @@ internal readonly struct PropertyAccessCacheKey : IEquatable<PropertyAccessCache
 
 	public override int GetHashCode()
 	{
-		return PropertyName.GetHashCode();
+		unchecked
+		{
+			return (PropertyName.GetHashCode() * 397) ^ Type.GetHashCode();
+		}
 	}
 }

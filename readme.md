@@ -39,22 +39,22 @@ AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
 ```
 |                      Method |                  Job |              Runtime |       Mean |     Error |    StdDev |
 |---------------------------- |--------------------- |--------------------- |-----------:|----------:|----------:|
-|       DynamicPropertyAccess |             .NET 7.0 |             .NET 7.0 |  38.063 ns | 0.7854 ns | 1.0484 ns |
-|     DynamicPropertyAccessor |             .NET 7.0 |             .NET 7.0 |  31.728 ns | 0.4040 ns | 0.3779 ns |
-|                  FastMember |             .NET 7.0 |             .NET 7.0 |  30.952 ns | 0.3137 ns | 0.2934 ns |
-|                  Reflection |             .NET 7.0 |             .NET 7.0 |  33.789 ns | 0.3169 ns | 0.2964 ns |
-| DynamicPropertyAccessReused |             .NET 7.0 |             .NET 7.0 |   1.677 ns | 0.0222 ns | 0.0208 ns |
-|            FastMemberReused |             .NET 7.0 |             .NET 7.0 |  15.371 ns | 0.1688 ns | 0.1579 ns |
-|            ReflectionReused |             .NET 7.0 |             .NET 7.0 |  12.011 ns | 0.1298 ns | 0.1215 ns |
-|       DynamicPropertyAccess | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  88.398 ns | 0.6464 ns | 0.5397 ns |
-|     DynamicPropertyAccessor | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  56.928 ns | 1.1533 ns | 1.0788 ns |
-|                  FastMember | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  48.617 ns | 0.9610 ns | 1.0282 ns |
-|                  Reflection | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 176.842 ns | 3.3967 ns | 4.0436 ns |
-| DynamicPropertyAccessReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |   6.066 ns | 0.0731 ns | 0.0684 ns |
-|            FastMemberReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  29.359 ns | 0.3300 ns | 0.2926 ns |
-|            ReflectionReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 121.696 ns | 2.4447 ns | 2.7173 ns |
+|       DynamicPropertyAccess |             .NET 7.0 |             .NET 7.0 |  26.776 ns | 0.4549 ns | 0.4255 ns |
+|     DynamicPropertyAccessor |             .NET 7.0 |             .NET 7.0 |  31.530 ns | 0.3986 ns | 0.3728 ns |
+|                  FastMember |             .NET 7.0 |             .NET 7.0 |  30.972 ns | 0.4472 ns | 0.4183 ns |
+|                  Reflection |             .NET 7.0 |             .NET 7.0 |  33.527 ns | 0.4686 ns | 0.4383 ns |
+| DynamicPropertyAccessReused |             .NET 7.0 |             .NET 7.0 |   1.475 ns | 0.0332 ns | 0.0311 ns |
+|            FastMemberReused |             .NET 7.0 |             .NET 7.0 |  14.770 ns | 0.1585 ns | 0.1483 ns |
+|            ReflectionReused |             .NET 7.0 |             .NET 7.0 |  12.105 ns | 0.2688 ns | 0.2514 ns |
+|       DynamicPropertyAccess | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  66.566 ns | 1.2969 ns | 1.3877 ns |
+|     DynamicPropertyAccessor | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  57.735 ns | 1.1492 ns | 1.4113 ns |
+|                  FastMember | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  43.592 ns | 0.1853 ns | 0.1547 ns |
+|                  Reflection | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 169.533 ns | 2.0884 ns | 1.6305 ns |
+| DynamicPropertyAccessReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |   5.731 ns | 0.0291 ns | 0.0227 ns |
+|            FastMemberReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  24.150 ns | 0.1821 ns | 0.1703 ns |
+|            ReflectionReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 120.565 ns | 2.4210 ns | 4.9455 ns |
 
-As you can see, `GetPropertyValue` is slightly slower than available alternatives.
+As you can see, `GetPropertyValue` is slightly slower on .NET Framework than available alternatives.
 This is because of thread safety overhead. On the other hand, reused `Func` from `GetPropertyGetter` is significantly faster. 
 Additionally, Reflection is almost as fast on .NET 7+.
 You can read more about it [here](https://devblogs.microsoft.com/dotnet/announcing-dotnet-7-preview-5/#system-reflection-performance-improvements-when-invoking-members).

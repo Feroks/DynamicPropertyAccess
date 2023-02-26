@@ -7,8 +7,8 @@ namespace DynamicPropertyAccess;
 /// </summary>
 public static class TypeExtensions
 {
-	private static readonly Func<object, object?> EmptyGetter = PropertyGetterSetter.Empty.Getter.Value;
-	private static readonly Action<object, object?> EmptySetter = PropertyGetterSetter.Empty.Setter.Value;
+	private static readonly Func<object, object?> EmptyGetter = PropertyGetterSetter.Empty.Getter;
+	private static readonly Action<object, object?> EmptySetter = PropertyGetterSetter.Empty.Setter;
 
 	/// <summary>
 	/// Get <see cref="Func{Object, Object}"/> that gets value of property called <see cref="propertyName"/> on passed object.
@@ -20,8 +20,7 @@ public static class TypeExtensions
 	{
 		return PropertyAccessCache
 			.GetObjectGetterSetter(source, propertyName)
-			.Getter
-			.Value;
+			.Getter;
 	}
 
 	/// <summary>
@@ -35,7 +34,7 @@ public static class TypeExtensions
 	{
 		if (PropertyAccessCache.TryGetObjectGetterSetter(source, propertyName, out var getterSetter))
 		{
-			getter = getterSetter.Getter.Value;
+			getter = getterSetter.Getter;
 			return true;
 		}
 
@@ -53,8 +52,7 @@ public static class TypeExtensions
 	{
 		return PropertyAccessCache
 			.GetObjectGetterSetter(source, propertyName)
-			.Setter
-			.Value;
+			.Setter;
 	}
 
 	/// <summary>
@@ -68,7 +66,7 @@ public static class TypeExtensions
 	{
 		if (PropertyAccessCache.TryGetObjectGetterSetter(source, propertyName, out var getterSetter))
 		{
-			setter = getterSetter.Setter.Value;
+			setter = getterSetter.Setter;
 			return true;
 		}
 
