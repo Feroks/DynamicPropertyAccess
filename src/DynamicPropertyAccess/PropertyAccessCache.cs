@@ -25,7 +25,7 @@ public static class PropertyAccessCache
 
 	internal static bool TryGetObjectGetterSetter(Type type, string propertyName, out PropertyGetterSetter getterSetter)
 	{
-		var value = Cache.GetOrAdd(new PropertyAccessCacheKey(propertyName, type), x => CreateGetterSetter(x.Type, x.PropertyName));
+		var value = Cache.GetOrAdd(new PropertyAccessCacheKey(propertyName, type), static x => CreateGetterSetter(x.Type, x.PropertyName));
 
 		// Comparison with null is much faster than comparing to PropertyGetterSetter.Empty
 		if (value != null)
