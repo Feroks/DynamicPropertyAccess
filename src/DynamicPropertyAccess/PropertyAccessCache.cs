@@ -9,7 +9,7 @@ namespace DynamicPropertyAccess;
 /// </summary>
 public static class PropertyAccessCache
 {
-	private static readonly ConcurrentDictionary<Type, ConcurrentDictionary<PropertyAccessCacheKey, PropertyGetterSetter?>> Cache = new();
+	private static readonly ConcurrentDictionary<PropertyAccessCacheKey, PropertyGetterSetter?> Cache = new();
 	private static readonly ParameterExpression ObjectParameter = Expression.Parameter(typeof(object), "source");
 	private static readonly ParameterExpression PropertyValueParameter = Expression.Parameter(typeof(object), "value");
 	private static readonly ParameterExpression[] GetterLambdaParameters = { ObjectParameter };
@@ -25,10 +25,7 @@ public static class PropertyAccessCache
 
 	internal static bool TryGetObjectGetterSetter(Type type, string propertyName, out PropertyGetterSetter getterSetter)
 	{
-		var value = Cache
-			.GetOrAdd(type, static _ => new())
-			// Create key to avoid creating closure for "type" variable 
-			.GetOrAdd(new PropertyAccessCacheKey(propertyName, type), x => CreateGetterSetter(x.Type, x.PropertyName));
+		var value = Cache.GetOrAdd(new PropertyAccessCacheKey(propertyName, type), x => CreateGetterSetter(x.Type, x.PropertyName));
 
 		// Comparison with null is much faster than comparing to PropertyGetterSetter.Empty
 		if (value != null)

@@ -32,5 +32,9 @@
 		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
 			<_Parameter1>DynamicPropertyAccess.Tests</_Parameter1>
 		</AssemblyAttribute>
+
+		<AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+			<_Parameter1>DynamicPropertyAccess.Benchmarks</_Parameter1>
+		</AssemblyAttribute>
 	</ItemGroup>
 </Project>
