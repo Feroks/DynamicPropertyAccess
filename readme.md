@@ -39,20 +39,20 @@ AMD Ryzen 7 3700X, 1 CPU, 16 logical and 8 physical cores
 ```
 |                      Method |                  Job |              Runtime |       Mean |     Error |    StdDev |
 |---------------------------- |--------------------- |--------------------- |-----------:|----------:|----------:|
-|       DynamicPropertyAccess |             .NET 7.0 |             .NET 7.0 |  27.549 ns | 0.2752 ns | 0.2574 ns |
-|     DynamicPropertyAccessor |             .NET 7.0 |             .NET 7.0 |  32.110 ns | 0.4228 ns | 0.3955 ns |
-|                  FastMember |             .NET 7.0 |             .NET 7.0 |  31.624 ns | 0.3068 ns | 0.2870 ns |
-|                  Reflection |             .NET 7.0 |             .NET 7.0 |  33.822 ns | 0.2084 ns | 0.1740 ns |
-| DynamicPropertyAccessReused |             .NET 7.0 |             .NET 7.0 |   1.675 ns | 0.0204 ns | 0.0191 ns |
-|            FastMemberReused |             .NET 7.0 |             .NET 7.0 |  15.345 ns | 0.1183 ns | 0.1106 ns |
-|            ReflectionReused |             .NET 7.0 |             .NET 7.0 |  12.033 ns | 0.2232 ns | 0.2088 ns |
-|       DynamicPropertyAccess | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  74.231 ns | 1.2512 ns | 1.1704 ns |
-|     DynamicPropertyAccessor | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  57.478 ns | 1.0758 ns | 1.0063 ns |
-|                  FastMember | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  44.485 ns | 0.1956 ns | 0.1734 ns |
-|                  Reflection | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 177.810 ns | 1.8636 ns | 1.6520 ns |
-| DynamicPropertyAccessReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |   6.054 ns | 0.0508 ns | 0.0475 ns |
-|            FastMemberReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  23.822 ns | 0.2128 ns | 0.1990 ns |
-|            ReflectionReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 120.524 ns | 1.5174 ns | 1.2671 ns |
+|       DynamicPropertyAccess |             .NET 7.0 |             .NET 7.0 |  26.776 ns | 0.4549 ns | 0.4255 ns |
+|     DynamicPropertyAccessor |             .NET 7.0 |             .NET 7.0 |  31.530 ns | 0.3986 ns | 0.3728 ns |
+|                  FastMember |             .NET 7.0 |             .NET 7.0 |  30.972 ns | 0.4472 ns | 0.4183 ns |
+|                  Reflection |             .NET 7.0 |             .NET 7.0 |  33.527 ns | 0.4686 ns | 0.4383 ns |
+| DynamicPropertyAccessReused |             .NET 7.0 |             .NET 7.0 |   1.475 ns | 0.0332 ns | 0.0311 ns |
+|            FastMemberReused |             .NET 7.0 |             .NET 7.0 |  14.770 ns | 0.1585 ns | 0.1483 ns |
+|            ReflectionReused |             .NET 7.0 |             .NET 7.0 |  12.105 ns | 0.2688 ns | 0.2514 ns |
+|       DynamicPropertyAccess | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  66.566 ns | 1.2969 ns | 1.3877 ns |
+|     DynamicPropertyAccessor | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  57.735 ns | 1.1492 ns | 1.4113 ns |
+|                  FastMember | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  43.592 ns | 0.1853 ns | 0.1547 ns |
+|                  Reflection | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 169.533 ns | 2.0884 ns | 1.6305 ns |
+| DynamicPropertyAccessReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |   5.731 ns | 0.0291 ns | 0.0227 ns |
+|            FastMemberReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 |  24.150 ns | 0.1821 ns | 0.1703 ns |
+|            ReflectionReused | .NET Framework 4.7.2 | .NET Framework 4.7.2 | 120.565 ns | 2.4210 ns | 4.9455 ns |
 
 As you can see, `GetPropertyValue` is slightly slower on .NET Framework than available alternatives.
 This is because of thread safety overhead. On the other hand, reused `Func` from `GetPropertyGetter` is significantly faster. 
