@@ -48,9 +48,7 @@ public static class PropertyAccessCache
 	private static PropertyGetterSetter? CreateGetterSetter(Type type, string propertyName)
 	{
 		return type.GetProperty(propertyName) != null
-			? new PropertyGetterSetter(
-				new Lazy<Func<object, object?>>(() => CreateGetter(type, propertyName)),
-				new Lazy<Action<object, object?>>(() => CreateSetter(type, propertyName)))
+			? new PropertyGetterSetter(CreateGetter(type, propertyName), CreateSetter(type, propertyName))
 			: null;
 	}
 
