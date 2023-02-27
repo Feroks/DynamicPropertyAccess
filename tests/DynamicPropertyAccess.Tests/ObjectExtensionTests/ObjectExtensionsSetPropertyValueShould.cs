@@ -31,7 +31,7 @@ public class ObjectExtensionsSetPropertyValueShould
 		// Assert
 		action
 			.Should()
-			.ThrowExactly<ArgumentException>();
+			.ThrowExactly<PropertyNotFoundException>();
 	}
 
 	[Fact]

@@ -45,7 +45,7 @@ public class ObjectExtensionsGetPropertyValueShould
 		// Assert
 		func
 			.Should()
-			.ThrowExactly<ArgumentException>();
+			.ThrowExactly<PropertyNotFoundException>();
 	}
 
 	[Fact]

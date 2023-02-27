@@ -42,7 +42,7 @@ public static class PropertyAccessCache
 	{
 		return TryGetObjectGetterSetter(type, propertyName, out var getterSetter)
 			? getterSetter
-			: throw new ArgumentException("Property not found on type", nameof(propertyName));
+			: throw new PropertyNotFoundException(type, propertyName);
 	}
 
 	private static PropertyGetterSetter? CreateGetterSetter(Type type, string propertyName)

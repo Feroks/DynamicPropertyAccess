@@ -16,6 +16,7 @@ public static class TypeExtensions
 	/// <param name="source"><see cref="Type"/> containing property called <paramref name="propertyName"/>.</param>
 	/// <param name="propertyName">Name fo the property.</param>
 	/// <returns>Func that gets property value.</returns>
+	/// <exception cref="PropertyNotFoundException">Thrown when <paramref name="propertyName"/> does not exist exist on <paramref name="source"/>.</exception>
 	/// <exception cref="PropertyDoesNotHaveGetterException">Thrown when property does not have getter.</exception>
 	public static Func<object, object?> GetPropertyGetter(this Type source, string propertyName)
 	{
@@ -49,6 +50,7 @@ public static class TypeExtensions
 	/// <param name="source"><see cref="Type"/> containing property called <paramref name="propertyName"/>.</param>
 	/// <param name="propertyName">Name fo the property.</param>
 	/// <returns>Action that sets property value.</returns>
+	/// <exception cref="PropertyNotFoundException">Thrown when <paramref name="propertyName"/> does not exist exist on <paramref name="source"/>.</exception>
 	/// <exception cref="PropertyDoesNotHaveSetterException">Thrown when property does not have setter.</exception>
 	public static Action<object, object?> GetPropertySetter(this Type source, string propertyName)
 	{

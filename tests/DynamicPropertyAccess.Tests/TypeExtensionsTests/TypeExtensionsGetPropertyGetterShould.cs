@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using System;
 using Xunit;
 
 namespace DynamicPropertyAccess.Tests.TypeExtensionsTests;
@@ -31,7 +30,7 @@ public class TypeExtensionsGetPropertyGetterShould
 		// Assert
 		func
 			.Should()
-			.ThrowExactly<ArgumentException>();
+			.ThrowExactly<PropertyNotFoundException>();
 	}
 
 	[Fact]
