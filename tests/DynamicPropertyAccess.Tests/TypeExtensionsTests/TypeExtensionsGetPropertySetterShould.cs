@@ -12,13 +12,13 @@ public class TypeExtensionsGetPropertySetterShould
 		var type = typeof(TestClass);
 
 		// Act
-		var factory1 = type.GetPropertySetter(nameof(TestClass.Value));
-		var factory2 = type.GetPropertySetter(nameof(TestClass.Value));
+		var setter1 = type.GetPropertySetter(nameof(TestClass.Value));
+		var setter2 = type.GetPropertySetter(nameof(TestClass.Value));
 
 		// Assert
-		factory1
+		setter1
 			.Should()
-			.Be(factory2);
+			.Be(setter2);
 	}
 
 	[Fact]

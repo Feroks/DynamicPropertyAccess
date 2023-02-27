@@ -12,13 +12,13 @@ public class TypeExtensionsGetPropertyGetterShould
 		var type = typeof(TestClass);
 
 		// Act
-		var factory1 = type.GetPropertyGetter(nameof(TestClass.Value));
-		var factory2 = type.GetPropertyGetter(nameof(TestClass.Value));
+		var getter1 = type.GetPropertyGetter(nameof(TestClass.Value));
+		var getter2 = type.GetPropertyGetter(nameof(TestClass.Value));
 
 		// Assert
-		factory1
+		getter1
 			.Should()
-			.Be(factory2);
+			.Be(getter2);
 	}
 
 	[Fact]
