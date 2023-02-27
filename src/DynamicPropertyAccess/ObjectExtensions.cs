@@ -14,6 +14,7 @@ public static class ObjectExtensions
 	/// <param name="propertyName">Name of the property.</param>
 	/// <typeparam name="T"><see cref="Type"/> of <paramref name="source"/>.</typeparam>
 	/// <returns>Value of property on <paramref name="source"/>.</returns>
+	/// <exception cref="PropertyDoesNotHaveGetterException">Thrown when property does not have getter.</exception>
 	public static T? GetPropertyValue<T>(this object source, string propertyName)
 	{
 		return (T?)source
@@ -47,6 +48,7 @@ public static class ObjectExtensions
 	/// <param name="source">Object whose property to change.</param>
 	/// <param name="propertyName">Name of the property to change.</param>
 	/// <param name="value">Value to set.</param>
+	/// <exception cref="PropertyDoesNotHaveSetterException">Thrown when property does not have setter.</exception>
 	public static void SetPropertyValue(this object source, string propertyName, object? value)
 	{
 		source

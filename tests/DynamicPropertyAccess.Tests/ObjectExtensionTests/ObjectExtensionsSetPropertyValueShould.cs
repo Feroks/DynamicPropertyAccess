@@ -45,4 +45,16 @@ public class ObjectExtensionsSetPropertyValueShould
 			.Should()
 			.ThrowExactly<InvalidCastException>();
 	}
+
+	[Fact]
+	public void ThrowExceptionIfPropertyDoesNotHaveSetter()
+	{
+		// Act
+		var action = () => _model.SetPropertyValue(nameof(TestClass.PropertyWithoutSet), 1);
+
+		// Assert
+		action
+			.Should()
+			.ThrowExactly<PropertyDoesNotHaveSetterException>();
+	}
 }

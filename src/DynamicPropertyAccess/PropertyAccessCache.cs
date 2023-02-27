@@ -47,8 +47,16 @@ public static class PropertyAccessCache
 
 	private static PropertyGetterSetter? CreateGetterSetter(Type type, string propertyName)
 	{
-		return type.GetProperty(propertyName) != null
-			? new PropertyGetterSetter(CreateGetter(type, propertyName), CreateSetter(type, propertyName))
+		var propertyInfo = type.GetProperty(propertyName);
+
+		return propertyInfo != null
+			? new PropertyGetterSetter(
+				propertyInfo.CanRead
+					? CreateGetter(type, propertyName)
+					: null,
+				propertyInfo.CanWrite
+					? CreateSetter(type, propertyName)
+					: null)
 			: null;
 	}
 

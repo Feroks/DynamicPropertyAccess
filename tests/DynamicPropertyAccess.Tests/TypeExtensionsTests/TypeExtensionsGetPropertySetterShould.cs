@@ -33,4 +33,16 @@ public class TypeExtensionsGetPropertySetterShould
 			.Should()
 			.ThrowExactly<ArgumentException>();
 	}
+
+	[Fact]
+	public void ThrowExceptionIfPropertyDoesNotHaveSetter()
+	{
+		// Act
+		var func = () => typeof(TestClass).GetPropertySetter(nameof(TestClass.PropertyWithoutSet));
+
+		// Assert
+		func
+			.Should()
+			.ThrowExactly<PropertyDoesNotHaveSetterException>();
+	}
 }

@@ -33,4 +33,16 @@ public class TypeExtensionsGetPropertyGetterShould
 			.Should()
 			.ThrowExactly<ArgumentException>();
 	}
+
+	[Fact]
+	public void ThrowExceptionIfPropertyDoesNotHaveGetter()
+	{
+		// Act
+		var func = () => typeof(TestClass).GetPropertyGetter(nameof(TestClass.PropertyWithoutGet));
+
+		// Assert
+		func
+			.Should()
+			.ThrowExactly<PropertyDoesNotHaveGetterException>();
+	}
 }
