@@ -12,10 +12,10 @@ public class TypeExtensionsTryGetPropertySetterShould
 		var type = typeof(TestClass);
 
 		// Act
-		var factory1 = type.TryGetPropertySetter(nameof(TestClass.Value), out _);
+		var setter = type.TryGetPropertySetter(nameof(TestClass.Value), out _);
 
 		// Assert
-		factory1
+		setter
 			.Should()
 			.BeTrue();
 	}
@@ -27,10 +27,10 @@ public class TypeExtensionsTryGetPropertySetterShould
 		var type = typeof(TestClass);
 
 		// Act
-		var factory1 = type.TryGetPropertySetter("NotRealProperty", out _);
+		var setter = type.TryGetPropertySetter("NotRealProperty", out _);
 
 		// Assert
-		factory1
+		setter
 			.Should()
 			.BeFalse();
 	}

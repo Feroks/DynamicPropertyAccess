@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using System;
 using Xunit;
 
 namespace DynamicPropertyAccess.Tests.TypeExtensionsTests;
@@ -13,13 +12,13 @@ public class TypeExtensionsGetPropertySetterShould
 		var type = typeof(TestClass);
 
 		// Act
-		var factory1 = type.GetPropertySetter(nameof(TestClass.Value));
-		var factory2 = type.GetPropertySetter(nameof(TestClass.Value));
+		var setter1 = type.GetPropertySetter(nameof(TestClass.Value));
+		var setter2 = type.GetPropertySetter(nameof(TestClass.Value));
 
 		// Assert
-		factory1
+		setter1
 			.Should()
-			.Be(factory2);
+			.Be(setter2);
 	}
 
 	[Fact]
@@ -31,6 +30,18 @@ public class TypeExtensionsGetPropertySetterShould
 		// Assert
 		func
 			.Should()
-			.ThrowExactly<ArgumentException>();
+			.ThrowExactly<PropertyNotFoundException>();
+	}
+
+	[Fact]
+	public void ThrowExceptionIfPropertyDoesNotHaveSetter()
+	{
+		// Act
+		var func = () => typeof(TestClass).GetPropertySetter(nameof(TestClass.PropertyWithoutSet));
+
+		// Assert
+		func
+			.Should()
+			.ThrowExactly<PropertyDoesNotHaveSetterException>();
 	}
 }

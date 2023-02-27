@@ -31,7 +31,7 @@ public class ObjectExtensionsSetPropertyValueShould
 		// Assert
 		action
 			.Should()
-			.ThrowExactly<ArgumentException>();
+			.ThrowExactly<PropertyNotFoundException>();
 	}
 
 	[Fact]
@@ -44,5 +44,17 @@ public class ObjectExtensionsSetPropertyValueShould
 		action
 			.Should()
 			.ThrowExactly<InvalidCastException>();
+	}
+
+	[Fact]
+	public void ThrowExceptionIfPropertyDoesNotHaveSetter()
+	{
+		// Act
+		var action = () => _model.SetPropertyValue(nameof(TestClass.PropertyWithoutSet), 1);
+
+		// Assert
+		action
+			.Should()
+			.ThrowExactly<PropertyDoesNotHaveSetterException>();
 	}
 }

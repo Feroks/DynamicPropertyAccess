@@ -42,13 +42,21 @@ public static class PropertyAccessCache
 	{
 		return TryGetObjectGetterSetter(type, propertyName, out var getterSetter)
 			? getterSetter
-			: throw new ArgumentException("Property not found on type", nameof(propertyName));
+			: throw new PropertyNotFoundException(type, propertyName);
 	}
 
 	private static PropertyGetterSetter? CreateGetterSetter(Type type, string propertyName)
 	{
-		return type.GetProperty(propertyName) != null
-			? new PropertyGetterSetter(CreateGetter(type, propertyName), CreateSetter(type, propertyName))
+		var propertyInfo = type.GetProperty(propertyName);
+
+		return propertyInfo != null
+			? new PropertyGetterSetter(
+				propertyInfo.CanRead
+					? CreateGetter(type, propertyName)
+					: null,
+				propertyInfo.CanWrite
+					? CreateSetter(type, propertyName)
+					: null)
 			: null;
 	}
 

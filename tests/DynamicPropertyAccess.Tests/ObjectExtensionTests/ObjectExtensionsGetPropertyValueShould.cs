@@ -45,7 +45,7 @@ public class ObjectExtensionsGetPropertyValueShould
 		// Assert
 		func
 			.Should()
-			.ThrowExactly<ArgumentException>();
+			.ThrowExactly<PropertyNotFoundException>();
 	}
 
 	[Fact]
@@ -58,5 +58,17 @@ public class ObjectExtensionsGetPropertyValueShould
 		func
 			.Should()
 			.ThrowExactly<InvalidCastException>();
+	}
+
+	[Fact]
+	public void ThrowExceptionIfPropertyDoesNotHaveGetter()
+	{
+		// Act
+		var func = () =>  _model.GetPropertyValue<int>(nameof(TestClass.PropertyWithoutGet));
+
+		// Assert
+		func
+			.Should()
+			.ThrowExactly<PropertyDoesNotHaveGetterException>();
 	}
 }
